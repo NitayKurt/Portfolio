@@ -129,7 +129,7 @@
         /* Game Window */
         .game-section {
             position: fixed;
-            top: 20px;
+            top: 80px; /* was 20px, now below navbar */
             right: 20px;
             width: 300px;
             height: 200px;
@@ -295,6 +295,10 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 0;
+            margin-top: 3rem; /* add space above carousel */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* center horizontally */
         }
 
         .carousel-3d {
@@ -304,6 +308,10 @@
             position: relative;
             margin: 3rem 0;
             overflow: visible;
+            display: flex;
+            justify-content: center; /* center carousel */
+            align-items: center;
+            margin-bottom: 120px; /* add space below carousel for buttons */
         }
 
         .carousel-stage {
@@ -313,16 +321,16 @@
             transform-style: preserve-3d;
             transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             left: 50%;
-            top: 50%;
+            top: 80%;
             transform-origin: 0 0 0;
         }
 
         .project-card-3d {
             position: absolute;
-            width: 320px;
-            height: 480px;
-            left: -160px;
-            top: -240px;
+            width: 260px;    /* was 320px */
+            height: 360px;   /* was 480px */
+            left: -130px;    /* half of new width */
+            top: -180px;     /* half of new height */
             background: rgba(96, 165, 250, 0.08);
             border: 1px solid rgba(96, 165, 250, 0.2);
             border-radius: 24px;
@@ -625,7 +633,7 @@
             justify-content: center;
             gap: 1.5rem;
             margin-top: 3rem;
-            z-index: 100;
+            z-index: 10; /* ensure buttons are above cards */
             position: relative;
         }
 
