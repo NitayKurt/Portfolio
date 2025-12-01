@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react';
+import Navbar from './components/Navbar';
+import GameWindow from './components/GameWindow';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import './styles/globalStyles.css';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    // Smooth reveal animations for sections
+    const sections = document.querySelectorAll<HTMLElement>('.section');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const element = entry.target as HTMLElement;
+        if (entry.isIntersecting) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      sectionObserver.observe(section);
+    });
+
+    return () => {
+      sections.forEach(section => sectionObserver.unobserve(section));
+    };
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="bg-animation"></div>
+      <Navbar />
+      <GameWindow />
+      <Hero />
+      <About />
+      <Projects />
+      <Contact />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
