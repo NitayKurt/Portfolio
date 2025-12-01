@@ -15,6 +15,41 @@
     transition: all 0.3s ease;
 }
 
+/* Open game button (fixed on top-right when game is closed) */
+.game-open-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    background: rgba(96, 165, 250, 0.25);
+    color: var(--primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(96, 165, 250, 0.15);
+}
+
+.game-open-btn:hover {
+    background: rgba(96, 165, 250, 0.35);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+}
+
+.game-open-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 /* Close button on the top-right of the floating game */
 .game-close {
     position: absolute;
@@ -23,6 +58,14 @@
     color: white;
     background: none;
     border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 2px 4px;
+    transition: opacity 0.2s ease;
+}
+
+.game-close:hover {
+    opacity: 0.7;
 }
 
 

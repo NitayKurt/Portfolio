@@ -68,7 +68,16 @@ export default function GameWindow() {
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) return (
+    <button
+      className="game-open-btn"
+      aria-label="Open game"
+      title="Open Game"
+      onClick={() => setIsOpen(true)}
+    >
+      🎮
+    </button>
+  );
 
   return (
     <div className="game-section">
